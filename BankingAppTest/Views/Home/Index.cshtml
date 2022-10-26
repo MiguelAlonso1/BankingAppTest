@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to banking app</h1>
+
+    <p>View all Accounts <a asp-area="" asp-controller="BankAccount" asp-action="Index">here</a>.</p>
+    <p>Initiate a transfer <a asp-area="" asp-controller="Transfer" asp-action="Create">here</a>.</p>
+    <p>View all Transactions <a asp-area="" asp-controller="Transfer" asp-action="Index">here</a>.</p>
+</div>

@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Transaction>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">All Transactions</h2>
+        </div>
+         <div class="col-6 text-right">
+            <a asp-controller="Transfer" asp-action="Create" class="btn btn-primary">Initiate New Transfer</a>
+        </div>
+    </div>
+    <br/>
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+            <tr>
+                <th>
+                    From Account
+                </th>
+                <th>
+                    To Account
+                </th>
+                <th>
+                    Transaction Time
+                </th>
+
+                <th>
+                    Amount Debited
+                </th>
+                <th>
+                    From Account Balance
+                </th>
+
+                <th>
+                    To Account Balance
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="20%">@obj.FromAccount</td>
+                    <td width="20%">@obj.ToAccount</td>
+                    <td width="20%">@obj.TransactionTime</td>
+                    <td width="20%">@obj.AmountDebited</td>
+                    <td width="30%">@obj.FromAccountBalance</td>
+                    <td width="30%">@obj.ToAccountBalance</td>
+
+                    <td width="25%">
+                        <div class="w-100 btn-group"role="group">
+                            <a asp-controller="Transfer" asp-action="Update" asp-route-Id="@obj.Id" class="btn btn-primary mx-1">Details</a>
+                            @*                            <a asp-controller="ExpenseType" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-danger mx-1">Delete</a>
+*@
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Funds Transfers Processed Yet</p>
+    }
+
+</div>
